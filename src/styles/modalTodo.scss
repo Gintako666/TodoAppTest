@@ -1,0 +1,47 @@
+.modal-todo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__item {
+    max-width: 1040px;
+    min-width: 600px;
+
+    padding: 40px;
+    width: max-content;
+    background: white;
+
+    &__title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    &__text {
+      line-height: 30px;
+      padding-bottom: 12px;
+      font-size: 20px;
+      max-width: 100%;
+      word-wrap:break-word;
+    }
+
+    &__checkbox {
+      gap: 12px;
+      align-items: center;
+      display: flex;
+      padding-bottom: 24px;
+    }
+
+    &__button {
+      width: 100px;
+      height: 40px;
+    }
+
+
+  }
+}

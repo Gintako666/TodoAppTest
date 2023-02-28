@@ -1,0 +1,22 @@
+.todo-list {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    &__part {
+      display: inline-block;
+      text-align: center;
+      padding: 6px;
+      background: #15d5bf;
+      border: 1px solid black;
+      position: relative;
+      max-width: 310px;
+      max-height: 35px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

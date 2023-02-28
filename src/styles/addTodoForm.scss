@@ -1,0 +1,13 @@
+.add-todo-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 40px;
+
+  &__button {
+    width: 200px;
+    height: 48px;
+  }
+}
+

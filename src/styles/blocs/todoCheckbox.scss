@@ -1,0 +1,22 @@
+.todo-check-box {
+  position: relative;
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid black;
+
+  &--completed {
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "✓";
+      display: block;
+      font-size: 20px;
+    }
+  }
+}

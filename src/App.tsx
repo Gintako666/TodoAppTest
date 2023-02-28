@@ -1,27 +1,23 @@
 import React from 'react';
 import './App.scss';
+import { useAppSelector } from './hooks/reduxHooks';
+import { AddTodoForm } from './components/AddTodoForm';
+import { ModalTodo } from './components/ModalTodo';
+import { TodoList } from './components/TodoList';
 
-interface Props {
-  onClick: () => void;
-}
+const App: React.FC = () => {
+  const { isOpen } = useAppSelector(state => state.modalTodo);
 
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
-
-export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
+    <div className="App">
+      <div className="container">
+        <AddTodoForm />
         <TodoList />
-      </Provider>
+        {isOpen && <ModalTodo />}
+      </div>
+
     </div>
   );
 };
+
+export default App;
