@@ -10,9 +10,6 @@ const todosSlice = createSlice({
     addTodos: (value, action: PayloadAction<Todo>) => {
       return { todos: [...value.todos, action.payload] };
     },
-    removeTodo: (value, action: PayloadAction<Todo>) => {
-      return { todos: value.todos.filter(item => item.id !== action.payload.id) };
-    },
     editTodo: (value, action: PayloadAction<Todo>) => {
       return {
         todos: value.todos.map((todo) => {

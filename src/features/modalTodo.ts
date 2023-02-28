@@ -3,10 +3,10 @@ import { Todo } from '../types/Todo';
 
 const initialState: {
   isOpen: boolean
-  selectTodo: Todo | null
+  selectedTodo: Todo | null
 } = {
   isOpen: false,
-  selectTodo: null,
+  selectedTodo: null,
 };
 
 const eventTodoSlice = createSlice({
@@ -16,7 +16,7 @@ const eventTodoSlice = createSlice({
     setSelectTodo: (value, action: PayloadAction<Todo | null>) => {
       return {
         ...value,
-        selectTodo: action.payload,
+        selectedTodo: action.payload,
       };
     },
     setOpenForm: (value, action: PayloadAction<boolean>) => {

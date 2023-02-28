@@ -6,17 +6,17 @@ import { TodoCheckbox } from './TodoCheckbox';
 export const ModalTodo = () => {
   const dispatch = useAppDispatch();
 
-  const { selectTodo } = useAppSelector(state => state.modalTodo);
+  const { selectedTodo } = useAppSelector(state => state.modalTodo);
 
   return (
     <div className="modal-todo">
       <div className="modal-todo__item">
-        <h1 className="modal-todo__item__title">{selectTodo?.title}</h1>
+        <h1 className="modal-todo__item__title">{selectedTodo?.title}</h1>
         <b className="modal-todo__item__text">Description:</b>
-        <p className="modal-todo__item__text">{selectTodo?.description}</p>
+        <p className="modal-todo__item__text">{selectedTodo?.description}</p>
         <div className="modal-todo__item__checkbox">
           Status:
-          <TodoCheckbox todo={selectTodo!} />
+          <TodoCheckbox todo={selectedTodo!} />
 
         </div>
         <button

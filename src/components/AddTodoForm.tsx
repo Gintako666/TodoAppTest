@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { actions } from '../features/todos';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { Input } from './Input';
@@ -19,6 +19,36 @@ export const AddTodoForm = () => {
     setInputErrors(prev => ({ ...prev, title: false }));
   }, [valueTitle]);
 
+  const handleSubmit = useCallback((title, description) => {
+    dispatch(actions.addTodos({
+      title,
+      description,
+      completed: false,
+      id: todoId += 1,
+    }));
+
+    setValueDescription('');
+    setValueTitle('');
+    setInputErrors({
+      title: false,
+      description: false,
+    });
+  }, []);
+
+  const addNewTodo = useCallback(() => {
+    if (!valueTitle) {
+      setInputErrors(prev => ({ ...prev, title: true }));
+    }
+
+    if (!valueDescription) {
+      setInputErrors(prev => ({ ...prev, description: true }));
+    }
+
+    if (valueTitle && valueDescription) {
+      handleSubmit(valueTitle, valueDescription);
+    }
+  }, [valueTitle, valueDescription]);
+
   return (
     <form className="add-todo-form">
       <Input error={inputErrors.title} value={valueTitle} setValue={setValueTitle} placeholder="Title" />
@@ -26,31 +56,7 @@ export const AddTodoForm = () => {
       <button
         className="add-todo-form__button"
         type="button"
-        onClick={() => {
-          if (!valueTitle) {
-            setInputErrors(prev => ({ ...prev, title: true }));
-          }
-
-          if (!valueDescription) {
-            setInputErrors(prev => ({ ...prev, description: true }));
-          }
-
-          if (valueTitle && valueDescription) {
-            dispatch(actions.addTodos({
-              title: valueTitle,
-              description: valueDescription,
-              completed: false,
-              id: todoId += 1,
-            }));
-
-            setValueDescription('');
-            setValueTitle('');
-            setInputErrors({
-              title: false,
-              description: false,
-            });
-          }
-        }}
+        onClick={addNewTodo}
       >
         Add todo
 
